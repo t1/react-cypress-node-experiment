@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import {connect} from "react-redux";
+
 import Book from "./BookItem";
 
 class BookTable extends React.Component {

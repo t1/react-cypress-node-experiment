@@ -4,7 +4,7 @@ import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faBook as BookIcon} from "@fortawesome/free-solid-svg-icons";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/es/FormControl";
+import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
 

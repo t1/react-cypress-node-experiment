@@ -6,6 +6,7 @@ import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faMinus as MinusIcon, faPlus as PlusIcon} from "@fortawesome/free-solid-svg-icons";
 
 import {decAction, incAction} from "../redux/actions";
+import Link from "react-router-dom/es/Link";
 
 class BookItem extends React.Component {
     render() {
@@ -21,7 +22,9 @@ class BookItem extends React.Component {
                     &nbsp;
                     {book.author}
                 </td>
-                <td>{book.title}</td>
+                <td>
+                    <Link to={'/books/' + book.id}>{book.title}</Link>
+                </td>
             </tr>
         )
     }
