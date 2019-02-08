@@ -1,7 +1,7 @@
 import React from "react";
 
 import Container from "react-bootstrap/Container";
-import PersonTable from "./PersonTable";
+import Books from "./BookTable";
 import Navigation from "./Navigation";
 
 export default class Page extends React.Component {
@@ -10,7 +10,7 @@ export default class Page extends React.Component {
             <Container>
                 <Navigation/>
                 <React.StrictMode>
-                    <PersonTable/>
+                    <Books/>
                 </React.StrictMode>
             </Container>
         );

@@ -2,41 +2,37 @@ import {createStore} from "redux";
 import {DEC, INC} from "./actionTypes";
 
 const initialState = {
-    persons: [
+    books: [
         {
             id: 1,
-            firstName: "Mark",
-            lastName: "Otto",
-            userName: "@mdo"
+            author: "J.R.R. Tolkien",
+            title: "The Hobbit",
         },
         {
             id: 2,
-            firstName: "Peter",
-            lastName: "Thornton",
-            userName: ""
+            author: "J.R.R. Tolkien",
+            title: "The Lord Of The Rings",
         },
         {
             id: 3,
-            firstName: "Larry the Bird",
-            userName: "@twitter"
+            author: "Steven King",
+            title: "It"
         }
     ]
 };
 
 function reducer(state = initialState, action) {
-    // console.log(state, action);
-
-    const personWith = update => {
+    const bookWith = update => {
         const clone = JSON.parse(JSON.stringify(state));
-        update(clone.persons.find((p) => p.id === action.payload.id));
+        update(clone.books.find((p) => p.id === action.payload.id));
         return clone;
     };
 
     switch (action.type) {
         case INC:
-            return personWith(person => person.firstName = person.firstName + "x");
+            return bookWith(book => book.author = book.author + "x");
         case DEC:
-            return personWith(person => person.firstName = person.firstName.substring(0, person.firstName.length - 1));
+            return bookWith(book => book.author = book.author.substring(0, book.author.length - 1));
         default:
             return state
     }
