@@ -1,27 +1,9 @@
 import {createStore} from "redux";
-import {DEC, INC} from "./actionTypes";
+import {DEC, INC, RECEIVE_BOOKS} from "./actionTypes";
 
-const initialState = {
-    books: [
-        {
-            id: 1,
-            author: "J.R.R. Tolkien",
-            title: "The Hobbit",
-        },
-        {
-            id: 2,
-            author: "J.R.R. Tolkien",
-            title: "The Lord Of The Rings",
-        },
-        {
-            id: 3,
-            author: "Steven King",
-            title: "It"
-        }
-    ]
-};
+function reducer(state = {books: []}, action) {
+    // console.log("reducer", action);
 
-function reducer(state = initialState, action) {
     const bookWith = update => {
         const clone = JSON.parse(JSON.stringify(state));
         update(clone.books.find((p) => p.id === action.payload.id));
@@ -33,6 +15,11 @@ function reducer(state = initialState, action) {
             return bookWith(book => book.author = book.author + "x");
         case DEC:
             return bookWith(book => book.author = book.author.substring(0, book.author.length - 1));
+        case RECEIVE_BOOKS:
+            return {
+                ...state,
+                books: action.payload
+            };
         default:
             return state
     }

@@ -7,8 +7,15 @@ import Container from "react-bootstrap/Container";
 import Navigation from "./Navigation";
 import BookTable from "./BookTable";
 import BookDetail from "./BookDetail";
+import {receiveBooksAction} from "../redux/actions";
 
 class Page extends React.Component {
+    componentDidMount() {
+        fetch("http://localhost:8080/books")
+            .then(res => res.json())
+            .then(books => this.props.receiveBooksAction(books))
+    }
+
     render() {
         return (
             <Router>
@@ -28,4 +35,4 @@ class Page extends React.Component {
     }
 }
 
-export default connect(state => ({books: state.books}))(Page);
+export default connect(state => ({books: state.books}), {receiveBooksAction})(Page);
