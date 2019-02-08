@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faMinus as MinusIcon, faPlus as PlusIcon} from "@fortawesome/free-solid-svg-icons";
 
-import {decAction, incAction} from "./actions";
+import {decAction, incAction} from "../redux/actions";
 
 class Person extends React.Component {
     render() {

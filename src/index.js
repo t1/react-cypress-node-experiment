@@ -5,8 +5,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 
-import Page from "./page";
-import store from "./store";
+import Page from "./components/Page";
+import store from "./redux/store";
 
 
 ReactDOM.render(

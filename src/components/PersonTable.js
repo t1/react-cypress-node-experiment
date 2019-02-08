@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import {connect} from "react-redux";
-import Person from "./person";
+import Person from "./Person";
 
 class PersonTable extends React.Component {
     render() {

@@ -1,15 +1,12 @@
 import React from "react";
-
-import {FontAwesomeIcon as Icon} from '@fortawesome/react-fontawesome'
-import {faBook as BookIcon} from '@fortawesome/free-solid-svg-icons'
-
-import Container from "react-bootstrap/Container";
-import PersonTable from "./personTable";
 import Navbar from "react-bootstrap/Navbar";
+import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
+import {faBook as BookIcon} from "@fortawesome/free-solid-svg-icons";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/es/FormControl";
 import Button from "react-bootstrap/Button";
+import {connect} from "react-redux";
 
 class Navigation extends React.Component {
     render() {
@@ -29,13 +26,4 @@ class Navigation extends React.Component {
     }
 }
 
-export default class Page extends React.Component {
-    render() {
-        return (
-            <Container>
-                <Navigation/>
-                <PersonTable/>
-            </Container>
-        );
-    }
-}
+export default connect()(Navigation);

@@ -23,7 +23,7 @@ const initialState = {
     ]
 };
 
-function data(state = initialState, action) {
+function reducer(state = initialState, action) {
     // console.log(state, action);
 
     const personWith = update => {
@@ -42,4 +42,4 @@ function data(state = initialState, action) {
     }
 }
 
-export default createStore(data);
+export default createStore(reducer);
