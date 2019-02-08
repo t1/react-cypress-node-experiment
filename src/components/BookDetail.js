@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Container from "react-bootstrap/Container";
+import {Link} from "react-router-dom";
 
 class BookDetail extends React.Component {
     render() {
@@ -9,6 +10,9 @@ class BookDetail extends React.Component {
         return (
             book ? (
                 <Container>
+                    <Link to="/">
+                        <h3>&lt;</h3>
+                    </Link>
                     <h3>{book.author}: {book.title}</h3>
                     <small>ID:{book.id}</small>
                 </Container>
