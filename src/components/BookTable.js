@@ -2,7 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import {connect} from "react-redux";
 
-import Book from "./BookItem";
+import BookItem from "./BookItem";
 
 class BookTable extends React.Component {
     render() {
@@ -16,8 +16,12 @@ class BookTable extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                {this.props.books.map((book) =>
-                    <Book book={book} key={book.id}/>)
+                {this.props.books
+                    ? this.props.books.map((book) =>
+                        <BookItem book={book} key={book.id}/>
+                    ) : (
+                        <tr><td colSpan={3}><h4>Loading...</h4></td></tr>
+                    )
                 }
                 </tbody>
             </Table>

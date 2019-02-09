@@ -6,11 +6,11 @@ import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 
 import Page from "./components/Page";
-import store from "./redux/store";
-
+import {createStore} from "redux";
+import rootReducer from "./redux/reducers";
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={createStore(rootReducer)}>
         <Page/>
     </Provider>,
     document.getElementById('root')
