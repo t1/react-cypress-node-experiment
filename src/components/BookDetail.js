@@ -1,7 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 import Container from "react-bootstrap/Container";
-import {Link} from "react-router-dom";
+import {faAngleLeft as AngleLeftIcon} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 class BookDetail extends React.Component {
     render() {
@@ -10,9 +12,9 @@ class BookDetail extends React.Component {
         return (
             book ? (
                 <Container>
-                    <Link to="/">
-                        <h3>&lt;</h3>
-                    </Link>
+                    <Breadcrumb>
+                        <Breadcrumb.Item href="/"><Icon icon={AngleLeftIcon} size="xs"/>Back To List</Breadcrumb.Item>
+                    </Breadcrumb>
                     <h3>{book.author}: {book.title}</h3>
                     <small>ID:{book.id}</small>
                 </Container>
