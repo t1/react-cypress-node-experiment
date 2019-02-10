@@ -4,9 +4,11 @@ export default function rootReducer(state = {books: []}, action) {
     console.log("reducer", action);
 
     const bookWith = update => {
-        const booksCopy = [...state.books];
-        update(booksCopy.find((p) => p.id === action.payload.id));
-        return {books: booksCopy};
+        return {
+            books: state.books.map((book) => {
+                return (book.id === action.payload.id) ? Object.assign({...book}, book, update(book)) : book;
+            })
+        };
     };
 
     switch (action.type) {
