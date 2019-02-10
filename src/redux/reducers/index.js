@@ -1,12 +1,12 @@
 import {DEC, INC, RECEIVE_BOOKS} from "../actionTypes";
 
-export default function rootReducer(state = {books:[]}, action) {
+export default function rootReducer(state = {books: []}, action) {
     console.log("reducer", action);
 
     const bookWith = update => {
-        const clone = JSON.parse(JSON.stringify(state));
-        update(clone.books.find((p) => p.id === action.payload.id));
-        return clone;
+        const booksCopy = [...state.books];
+        update(booksCopy.find((p) => p.id === action.payload.id));
+        return {books: booksCopy};
     };
 
     switch (action.type) {
