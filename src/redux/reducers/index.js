@@ -1,11 +1,6 @@
-import {DEC, INC, RECEIVE_BOOKS} from "../actionTypes";
+import {COUNT_DOWN, COUNT_UP, DEC, INC, RECEIVE_BOOKS} from "../actionTypes";
 
-export default function rootReducer(state = {
-    books: [],
-    counter: 0
-}, action) {
-    console.log("reducer", action);
-
+function bookReducer(state = {}, action) {
     const bookWith = update => {
         return {
             ...state,
@@ -20,11 +15,17 @@ export default function rootReducer(state = {
     };
 
     switch (action.type) {
-        case INC:
-            if (action.payload.id === 1) return {
+        case COUNT_UP:
+            return {
                 ...state,
                 counter: state.counter + 1
             };
+        case COUNT_DOWN:
+            return {
+                ...state,
+                counter: state.counter - 1
+            };
+        case INC:
             return bookWith(book => book.author = book.author + "x");
         case DEC:
             return bookWith(book => book.author = book.author.substring(0, book.author.length - 1));
@@ -36,4 +37,12 @@ export default function rootReducer(state = {
         default:
             return state
     }
+}
+
+export default function rootReducer(state = {
+    books: [],
+    counter: 0
+}, action) {
+    console.log("reducer", action);
+    return bookReducer(state, action);
 }

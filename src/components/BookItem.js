@@ -1,12 +1,9 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
-
-import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
-import {faMinus as MinusIcon, faPlus as PlusIcon} from "@fortawesome/free-solid-svg-icons";
 
 import {decAction, incAction} from "../redux/actions";
 import Link from "react-router-dom/es/Link";
+import {PlusMinus} from "./PlusMinus";
 
 class BookItem extends React.Component {
     render() {
@@ -16,9 +13,7 @@ class BookItem extends React.Component {
             <tr>
                 <td>{book.id}</td>
                 <td>
-                    <Button onClick={() => this.props.incAction(book.id)}><Icon icon={PlusIcon} size="xs"/></Button>
-                    &nbsp;
-                    <Button onClick={() => this.props.decAction(book.id)}><Icon icon={MinusIcon} size="xs"/></Button>
+                    <PlusMinus plus={() => this.props.incAction(book.id)} minus={() => this.props.decAction(book.id)}/>
                     &nbsp;
                     {book.author}
                 </td>
