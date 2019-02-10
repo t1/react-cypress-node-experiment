@@ -21,18 +21,22 @@ class Page extends React.Component {
             <Router>
                 <Container>
                     <Navigation/>
-                    <Route exact={true} path="/" component={BookTable}/>
-                    <Route path="/books/:bookId" render={({match}) => {
-                        // noinspection JSUnresolvedVariable
-                        const bookId = Number.parseInt(match.params.bookId);
-                        return (
-                            <BookDetail book={this.props.books.find(b => b.id === bookId)}/>
-                        )
-                    }}/>
+                    <h1>Books</h1>
+                    <small>{this.props.counter}</small>
+                    <Container>
+                        <Route exact={true} path="/" component={BookTable}/>
+                        <Route path="/books/:bookId" render={({match}) => {
+                            // noinspection JSUnresolvedVariable
+                            const bookId = Number.parseInt(match.params.bookId);
+                            return (
+                                <BookDetail book={this.props.books.find(b => b.id === bookId)}/>
+                            )
+                        }}/>
+                    </Container>
                 </Container>
             </Router>
         );
     }
 }
 
-export default connect(state => ({books: state.books}), {receiveBooksAction})(Page);
+export default connect(state => ({books: state.books, counter: state.counter}), {receiveBooksAction})(Page);
