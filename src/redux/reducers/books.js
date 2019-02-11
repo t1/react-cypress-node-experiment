@@ -16,7 +16,7 @@ export default function books(books = [], action) {
 
     if (action.type.startsWith("BOOK_"))
         return books.map((book) => {
-            if (book.id === action.payload.id) {
+            if (book.id === action.id) {
                 const copy = {...book};
                 updateBook(copy, action);
                 return copy;
@@ -24,7 +24,7 @@ export default function books(books = [], action) {
         });
     switch (action.type) {
         case BOOKS_RECEIVE:
-            return action.payload;
+            return action.books;
         default:
             return books;
     }

@@ -1,24 +1,24 @@
 import {BOOK_MINUS, BOOK_PLUS, BOOKS_RECEIVE, COUNTER_DOWN, COUNTER_UP} from "./actionTypes";
 
-export const decAction = id => ({
+export const bookMinus = id => ({
     type: BOOK_MINUS,
-    payload: {id}
+    id: id
 });
 
-export const incAction = id => ({
+export const bookPlus = id => ({
     type: BOOK_PLUS,
-    payload: {id}
+    id: id
 });
 
-export const countUp = () => ({
+export const counterUp = () => ({
     type: COUNTER_UP,
 });
 
-export const countDown = () => ({
+export const counterDown = () => ({
     type: COUNTER_DOWN,
 });
 
-export const receiveBooksAction = books => ({
+export const booksReceive = books => ({
     type: BOOKS_RECEIVE,
-    payload: books
+    books: books
 });
