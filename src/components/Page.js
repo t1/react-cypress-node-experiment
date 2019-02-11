@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 import Navigation from "./Navigation";
 import BookTable from "./BookTable";
 import BookDetail from "./BookDetail";
-import {PlusMinus} from "./PlusMinus";
+import PlusMinus from "./PlusMinus";
 import {counterDown, counterUp} from "../actions/actions";
 
 class Page extends React.Component {
@@ -19,11 +19,12 @@ class Page extends React.Component {
                     <Navigation/>
                     <br/>
                     <h1>Books</h1>
-                    <p>
+                    <Container>
                         <PlusMinus plus={() => this.props.counterUp()} minus={() => this.props.counterDown()}/>
                         &nbsp;
-                        <small>{this.props.counter}</small>
-                    </p>
+                        Counter: {this.props.counter}
+                    </Container>
+                    <p/>
                     <Container>
                         <Route exact={true} path="/" component={BookTable}/>
                         <Route path="/books/:bookId" render={({match}) => {
