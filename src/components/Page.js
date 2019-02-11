@@ -5,20 +5,13 @@ import {connect} from "react-redux";
 
 import Container from "react-bootstrap/Container";
 
-
 import Navigation from "./Navigation";
 import BookTable from "./BookTable";
 import BookDetail from "./BookDetail";
-import {booksReceive, counterDown, counterUp} from "../redux/actions";
 import {PlusMinus} from "./PlusMinus";
+import {counterDown, counterUp} from "../actions/actions";
 
 class Page extends React.Component {
-    componentDidMount() {
-        fetch("http://localhost:8080/books")
-            .then(res => res.json())
-            .then(books => this.props.booksReceive(books))
-    }
-
     render() {
         return (
             <Router>
@@ -47,11 +40,7 @@ class Page extends React.Component {
     }
 }
 
-export default connect(state => ({
-    books: state.books,
-    counter: state.counter
-}), {
-    booksReceive,
+export default connect(null, {
     counterUp,
     counterDown
 })(Page);

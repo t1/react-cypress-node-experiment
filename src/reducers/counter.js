@@ -1,4 +1,4 @@
-import {COUNTER_DOWN, COUNTER_UP} from "../actionTypes";
+import {COUNTER_DOWN, COUNTER_UP} from "../actions/actionTypes";
 
 export default function counter(counter = 0, action) {
     switch (action.type) {

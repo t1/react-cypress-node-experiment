@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {bookMinus, bookPlus} from "../redux/actions";
+import {bookMinus, bookPlus} from "../actions/actions";
 import Link from "react-router-dom/es/Link";
 import {PlusMinus} from "./PlusMinus";
 
