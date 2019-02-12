@@ -1,4 +1,4 @@
-import {BOOK_MINUS, BOOK_PLUS, BOOKS_RECEIVE} from "../actions/actionTypes";
+import {BOOK_MINUS, BOOK_PLUS, BOOKS_RECEIVE} from "../actions/actions";
 
 function updateBook(book, action) {
     switch (action.type) {
