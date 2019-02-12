@@ -1,7 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import {booksReceive} from "../actions/actions";
+
 import Page from "./Page";
+import {booksReceive} from "../actions/bookActions";
 
 class App extends React.Component {
     componentDidMount() {

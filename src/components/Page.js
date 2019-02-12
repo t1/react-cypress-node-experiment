@@ -9,7 +9,9 @@ import Navigation from "./Navigation";
 import BookTable from "./BookTable";
 import BookDetail from "./BookDetail";
 import PlusMinus from "./PlusMinus";
-import {counterDown, counterUp} from "../actions/actions";
+
+import {counterDown, counterUp} from "../actions/counterActions";
+
 
 class Page extends React.Component {
     render() {

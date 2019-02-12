@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import {connect} from "react-redux";
 
 import BookItem from "./BookItem";
-import {bookMinus, bookPlus} from "../actions/actions";
+import {bookMinus, bookPlus} from "../actions/bookActions";
 import PlusMinus from "./PlusMinus";
 
 const BookTable = ({books, bookPlus, bookMinus}) => (

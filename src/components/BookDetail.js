@@ -1,8 +1,10 @@
 import React from "react";
+
 import Container from "react-bootstrap/Container";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
+
 import {faAngleLeft as AngleLeftIcon} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 const BookDetail = ({book}) => {
     return (
