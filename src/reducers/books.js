@@ -41,3 +41,5 @@ function requestBooks(dispatch) {
 }
 
 export const selectBooks = state => state.books;
+
+export const selectBook = (state, bookId) => selectBooks(state).find(b => b.id === bookId);
