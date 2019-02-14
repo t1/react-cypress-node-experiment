@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 
-import App from "./components/App";
+import Page from "./components/Page";
 import {createStore} from "redux";
 import rootReducer from "./reducers";
 import init from "./actions";
@@ -19,7 +19,7 @@ store.dispatch(init(store));
 
 ReactDOM.render(
     <Provider store={store}>
-        <App/>
+        <Page/>
     </Provider>,
     document.getElementById('root')
 );

@@ -10,3 +10,5 @@ export default function counter(counter = 0, action) {
             return counter;
     }
 }
+
+export const selectCounter = state => state.counter;

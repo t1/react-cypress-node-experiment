@@ -11,39 +11,42 @@ import BookDetail from "./BookDetail";
 import PlusMinus from "./PlusMinus";
 
 import {counterDown, counterUp} from "../actions/counterActions";
+import {selectBooks} from "../reducers/books";
+import {selectCounter} from "../reducers/counter";
 
 
-class Page extends React.Component {
-    render() {
-        return (
-            <Router>
+const Page = ({books, counter, counterUp, counterDown}) => {
+    return (
+        <Router>
+            <Container>
+                <Navigation/>
+                <br/>
+                <h1>Books</h1>
                 <Container>
-                    <Navigation/>
-                    <br/>
-                    <h1>Books</h1>
-                    <Container>
-                        <PlusMinus plus={() => this.props.counterUp()} minus={() => this.props.counterDown()}/>
-                        &nbsp;
-                        Counter: {this.props.counter}
-                    </Container>
-                    <p/>
-                    <Container>
-                        <Route exact={true} path="/" component={BookTable}/>
-                        <Route path="/books/:bookId" render={({match}) => {
-                            // noinspection JSUnresolvedVariable
-                            const bookId = Number.parseInt(match.params.bookId);
-                            return (
-                                <BookDetail book={this.props.books.find(b => b.id === bookId)}/>
-                            )
-                        }}/>
-                    </Container>
+                    <PlusMinus plus={() => counterUp()} minus={() => counterDown()}/>
+                    &nbsp;
+                    Counter: {counter}
                 </Container>
-            </Router>
-        );
-    }
-}
+                <p/>
+                <Container>
+                    <Route exact={true} path="/" component={BookTable}/>
+                    <Route path="/books/:bookId" render={({match}) => {
+                        // noinspection JSUnresolvedVariable
+                        const bookId = Number.parseInt(match.params.bookId);
+                        return (
+                            <BookDetail book={books.find(b => b.id === bookId)}/>
+                        )
+                    }}/>
+                </Container>
+            </Container>
+        </Router>
+    );
+};
 
-export default connect(null, {
+export default connect(state => ({
+    books: selectBooks(state),
+    counter: selectCounter(state)
+}), {
     counterUp,
     counterDown
 })(Page);

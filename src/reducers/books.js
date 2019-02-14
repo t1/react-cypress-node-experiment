@@ -39,3 +39,5 @@ function requestBooks(dispatch) {
         .then(res => res.json(), err => console.error("error while fetching books:", err))
         .then(books => {if (books) dispatch(booksReceive(books))});
 }
+
+export const selectBooks = state => state.books;

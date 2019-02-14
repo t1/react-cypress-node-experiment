@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import BookItem from "./BookItem";
 import {bookMinus, bookPlus} from "../actions/bookActions";
 import PlusMinus from "./PlusMinus";
+import {selectBooks} from "../reducers/books";
 
 const BookTable = ({books, bookPlus, bookMinus}) => (
     <Table bordered size="sm">
@@ -33,7 +34,7 @@ const BookTable = ({books, bookPlus, bookMinus}) => (
     </Table>
 );
 
-export default connect(state => ({books: state.books}), {
+export default connect(state => ({books: selectBooks(state)}), {
     bookPlus,
     bookMinus
 })(BookTable);
