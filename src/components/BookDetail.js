@@ -12,12 +12,11 @@ const BookDetail = ({book}) => {
         book ? (
             <Container>
                 <Breadcrumb>
-                    <Breadcrumb.Item>
-                        <Link to={'/'}>
-                            <Icon icon={AngleLeftIcon} size="xs"/>
-                            Back To List
-                        </Link>
-                    </Breadcrumb.Item>
+                    <Link to="/" role="button">
+                        <Icon icon={AngleLeftIcon} size="xs"/>
+                        &nbsp;
+                        Back To List
+                    </Link>
                 </Breadcrumb>
                 <h3>{book.author}: {book.title}</h3>
                 <small>ID:{book.id}</small>
