@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "react-router-dom/es/Link";
 
-const BookItem = ({book, children}) => (
+const BookItem = ({book, children}) =>
     <tr>
         <td>{book.id}</td>
         <td>
@@ -11,7 +11,6 @@ const BookItem = ({book, children}) => (
         <td>
             <Link to={'/books/' + book.id}>{book.title}</Link>
         </td>
-    </tr>
-);
+    </tr>;
 
 export default BookItem;

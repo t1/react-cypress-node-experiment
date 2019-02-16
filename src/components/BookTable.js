@@ -7,7 +7,7 @@ import {bookMinus, bookPlus} from "../actions/bookActions";
 import PlusMinus from "./PlusMinus";
 import {selectBooks} from "../reducers/books";
 
-const BookTable = ({books, bookPlus, bookMinus}) => (
+const BookTable = ({books, bookPlus, bookMinus}) =>
     <Table bordered size="sm">
         <thead>
         <tr>
@@ -31,8 +31,7 @@ const BookTable = ({books, bookPlus, bookMinus}) => (
             )
         }
         </tbody>
-    </Table>
-);
+    </Table>;
 
 export default connect(state => ({books: selectBooks(state)}), {
     bookPlus,

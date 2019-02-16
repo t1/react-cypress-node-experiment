@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faBook as BookIcon} from "@fortawesome/free-solid-svg-icons";
 
-const Navigation = () => (
+const Navigation = () =>
     <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="#home"><Icon icon={BookIcon} inverse size="lg"/></Navbar.Brand>
         <Nav className="mr-auto">
@@ -20,7 +20,6 @@ const Navigation = () => (
             <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
             <Button variant="outline-info">Search</Button>
         </Form>
-    </Navbar>
-);
+    </Navbar>;
 
 export default Navigation;
