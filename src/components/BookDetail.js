@@ -6,9 +6,12 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import {faAngleLeft as AngleLeftIcon} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import Link from "react-router-dom/es/Link";
+import {connect} from "react-redux";
+import {selectBook} from "../reducers/books";
 
-const BookDetail = ({book}) =>
-    book ?
+const BookDetail = ({selectBook, bookId}) => {
+    const book = selectBook(Number.parseInt(bookId));
+    return book ?
         <Container>
             <Breadcrumb>
                 <Link to="/" role="button">
@@ -22,5 +25,9 @@ const BookDetail = ({book}) =>
         </Container>
         :
         <h3>Unknown Book</h3>;
+};
 
-export default BookDetail;
+
+export default connect(state => ({
+    selectBook: bookId => selectBook(state, bookId),
+}))(BookDetail);
