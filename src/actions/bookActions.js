@@ -13,5 +13,6 @@ export const bookPlus = id => ({
 export const BOOKS_RECEIVE = 'BOOKS_RECEIVE';
 export const booksReceive = books => ({
     type: BOOKS_RECEIVE,
-    books: books
+    items: books,
+    receivedAt: new Date()
 });

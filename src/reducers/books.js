@@ -3,12 +3,13 @@ import {INIT} from "../actions";
 
 export default function books(state = {
     isFetching: false,
-    books: []
+    items: [],
+    lastUpdated: undefined
 }, action) {
     if (action.type.startsWith("BOOK_"))
         return {
             ...state,
-            books: handleBook(state, action)
+            items: handleBook(state, action)
         };
     switch (action.type) {
         case INIT:
@@ -21,7 +22,8 @@ export default function books(state = {
             return {
                 ...state,
                 isFetching: false,
-                books: action.books
+                items: action.items,
+                lastUpdated: action.receivedAt
             };
         default:
             return state;
@@ -29,7 +31,7 @@ export default function books(state = {
 }
 
 function handleBook(state, action) {
-    return state.books.map((book) => {
+    return state.items.map((book) => {
         if (book.id === action.id) {
             const copy = {...book};
             updateBook(copy, action);
@@ -59,7 +61,7 @@ function requestBooks(dispatch) {
 
 export const selectBooks = state => state.books;
 
-export const selectBook = (state, bookId) => selectBooks(state).books.find(b => b.id === bookId);
+export const selectBook = (state, bookId) => selectBooks(state).items.find(b => b.id === bookId);
 // export const selectBook = (bookId) => {
 //     console.log(`thunk select book $bookId`);
 //     return (dispatch, getState) => {
