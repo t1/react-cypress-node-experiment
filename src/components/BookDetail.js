@@ -11,22 +11,29 @@ import {selectBook} from "../reducers/books";
 
 const BookDetail = ({selectBook, bookId}) => {
     const book = selectBook(Number.parseInt(bookId));
-    return book ?
-        <Container>
-            <Breadcrumb>
-                <Link to="/" role="button">
-                    <Icon icon={AngleLeftIcon} size="xs"/>
-                    &nbsp;
-                    Back To List
-                </Link>
-            </Breadcrumb>
-            <h3>{book.author}: {book.title}</h3>
-            <small>ID:{book.id}</small>
-        </Container>
-        :
-        <h3>Unknown Book</h3>;
+    return <Container>
+        <Breadcrumb>
+            <Link to="/" role="button">
+                <Icon icon={AngleLeftIcon} size="xs"/>
+                &nbsp;
+                Back To List
+            </Link>
+        </Breadcrumb>
+        {book ?
+            <Container>
+                <h3>{book.author}: {book.title}</h3>
+                {book.recommendedReadingAge ?
+                    <Container>Recommended reading age: {book.recommendedReadingAge}+</Container>
+                    :
+                    <Container>No recommended reading age</Container>
+                }
+                <br/>
+                <small>ID:{book.id}</small>
+            </Container>
+            :
+            <h3>Unknown Book</h3>}
+    </Container>;
 };
-
 
 export default connect(state => ({
     selectBook: bookId => selectBook(state, bookId),

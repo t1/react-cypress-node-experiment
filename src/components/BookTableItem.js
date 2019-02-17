@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "react-router-dom/es/Link";
 
-const BookItem = ({book, children}) =>
+const BookTableItem = ({book, children}) =>
     <tr>
         <td>{book.id}</td>
         <td>
@@ -13,4 +13,4 @@ const BookItem = ({book, children}) =>
         </td>
     </tr>;
 
-export default BookItem;
+export default BookTableItem;

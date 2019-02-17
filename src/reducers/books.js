@@ -2,7 +2,7 @@ import {BOOK_MINUS, BOOK_PLUS, BOOKS_RECEIVE, booksReceive} from "../actions/boo
 import {INIT} from "../actions";
 
 export default function books(books = [], action) {
-    console.log("booksReducer", books, action);
+    // console.log("booksReducer", books, action);
 
     if (action.type.startsWith("BOOK_"))
         return books.map((book) => {

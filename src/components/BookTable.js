@@ -1,10 +1,11 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
 import {connect} from "react-redux";
+import Table from "react-bootstrap/Table";
 
-import BookItem from "./BookItem";
-import {bookMinus, bookPlus} from "../actions/bookActions";
+import BookTableItem from "./BookTableItem";
 import PlusMinus from "./PlusMinus";
+
+import {bookMinus, bookPlus} from "../actions/bookActions";
 import {selectBooks} from "../reducers/books";
 
 const BookTable = ({books, bookPlus, bookMinus}) =>
@@ -17,11 +18,11 @@ const BookTable = ({books, bookPlus, bookMinus}) =>
         </tr>
         </thead>
         <tbody>
-        {books
+        {(books && books.length > 0)
             ? books.map((book) =>
-                <BookItem book={book} key={book.id}>
+                <BookTableItem book={book} key={book.id}>
                     <PlusMinus plus={() => bookPlus(book.id)} minus={() => bookMinus(book.id)}/>&nbsp;
-                </BookItem>
+                </BookTableItem>
             ) : (
                 <tr>
                     <td colSpan={3}>
