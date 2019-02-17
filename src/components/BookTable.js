@@ -8,8 +8,10 @@ import PlusMinus from "./PlusMinus";
 import {bookMinus, bookPlus} from "../actions/bookActions";
 import {selectBooks} from "../reducers/books";
 
-const BookTable = ({books, bookPlus, bookMinus}) =>
-    <Table bordered size="sm">
+const BookTable = ({books, bookPlus, bookMinus}) => {
+    if (books.isFetching)
+        return <h4>Loading...</h4>;
+    return <Table bordered size="sm">
         <thead>
         <tr>
             <th>#</th>
@@ -18,21 +20,14 @@ const BookTable = ({books, bookPlus, bookMinus}) =>
         </tr>
         </thead>
         <tbody>
-        {(books && books.length > 0)
-            ? books.map((book) =>
-                <BookTableItem book={book} key={book.id}>
-                    <PlusMinus plus={() => bookPlus(book.id)} minus={() => bookMinus(book.id)}/>&nbsp;
-                </BookTableItem>
-            ) : (
-                <tr>
-                    <td colSpan={3}>
-                        <h4>Loading...</h4>
-                    </td>
-                </tr>
-            )
-        }
+        {books.books.map((book) =>
+            <BookTableItem book={book} key={book.id}>
+                <PlusMinus plus={() => bookPlus(book.id)} minus={() => bookMinus(book.id)}/>&nbsp;
+            </BookTableItem>
+        )}
         </tbody>
     </Table>;
+};
 
 export default connect(state => ({books: selectBooks(state)}), {
     bookPlus,
