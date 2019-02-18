@@ -1,11 +1,11 @@
 import {BOOK_MINUS, BOOK_PLUS, BOOKS_RECEIVE, booksReceive} from "../actions/bookActions";
 import {INIT} from "../actions";
 
-export default function books(state = {
+export default (state = {
     isFetching: false,
     items: [],
     lastUpdated: undefined
-}, action) {
+}, action) => {
     if (action.type.startsWith("BOOK_"))
         return {
             ...state,
@@ -33,9 +33,9 @@ export default function books(state = {
 function handleBook(state, action) {
     return state.items.map((book) => {
         if (book.id === action.id) {
-            const copy = {...book};
-            updateBook(copy, action);
-            return copy;
+            const nextBook = {...book};
+            updateBook(nextBook, action);
+            return nextBook;
         } else return book;
     });
 }
@@ -57,17 +57,4 @@ function requestBooks(dispatch) {
         .then(books => {if (books) dispatch(booksReceive(books))});
 }
 
-// const BOOK_TEMPLATE = template.parse("http://localhost:8080/books/{bookId}");
-
 export const selectBooks = state => state.books;
-
-export const selectBook = (state, bookId) => selectBooks(state).items.find(b => b.id === bookId);
-// export const selectBook = (bookId) => {
-//     console.log(`thunk select book $bookId`);
-//     return (dispatch, getState) => {
-//         console.log(`select book $bookId`);
-//         fetch(BOOK_TEMPLATE.expand({bookId}))
-//             .then(res => res.json(), err => console.error(`error while fetching book ${bookId}:`, err))
-//             .then(book => {if (book) dispatch(bookReceive(book))});
-//     }
-// };

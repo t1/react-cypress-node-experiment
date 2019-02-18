@@ -7,7 +7,7 @@ import {faAngleLeft as AngleLeftIcon} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import Link from "react-router-dom/es/Link";
 import {connect} from "react-redux";
-import {selectBook} from "../reducers/books";
+import {selectBook} from "../reducers/book";
 
 const BookDetail = ({selectBook, bookId}) => {
     const book = selectBook(Number.parseInt(bookId));
@@ -19,20 +19,29 @@ const BookDetail = ({selectBook, bookId}) => {
                 Back To List
             </Link>
         </Breadcrumb>
-        {book ?
-            <Container>
-                <h3>{book.author}: {book.title}</h3>
-                {book.recommendedReadingAge ?
-                    <Container>Recommended reading age: {book.recommendedReadingAge}+</Container>
-                    :
-                    <Container>No recommended reading age</Container>
-                }
-                <br/>
-                <small>ID:{book.id}</small>
-            </Container>
-            :
-            <h3>Unknown Book</h3>}
+        <BookData book={book}/>
     </Container>;
+};
+
+const BookData = ({book}) => {
+    if (!book) {
+        return <h3>?</h3>
+    } else if (book.isFetching) {
+        return <h3>Please wait...</h3>
+    } else if (book.data) {
+        return <Container>
+            <h3>{book.data.author}: {book.data.title}</h3>
+            {book.data.recommendedReadingAge ?
+                <Container>Recommended reading age: {book.data.recommendedReadingAge}+</Container>
+                :
+                <Container>No recommended reading age</Container>
+            }
+            <br/>
+            <small>ID:{book.data.id}</small>
+        </Container>
+    } else {
+        return <h3>Unknown Book</h3>
+    }
 };
 
 export default connect(state => ({

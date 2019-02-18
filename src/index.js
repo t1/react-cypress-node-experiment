@@ -4,16 +4,18 @@ import 'bootstrap/dist/css/bootstrap.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
+import {applyMiddleware, createStore} from "redux";
+import {composeWithDevTools} from 'redux-devtools-extension';
+import thunk from 'redux-thunk'
 
 import Page from "./components/Page";
-import {createStore} from "redux";
 import rootReducer from "./reducers";
 import init from "./actions";
 
-// noinspection JSUnresolvedVariable
-const devToolsEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
-const store = createStore(rootReducer, devToolsEnhancer);
+const store = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(thunk))
+);
 
 store.dispatch(init(store));
 
