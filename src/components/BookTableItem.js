@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "react-router-dom/es/Link";
-import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
 import {selectBooks} from "../reducers/books";
 import {bookFetch} from "../actions/bookActions";
@@ -13,8 +12,7 @@ const BookTableItem = ({book, children, bookFetch}) =>
             {book.author}
         </td>
         <td>
-            <Button variant="secondary" onClick={() => bookFetch(book.id)} size="sm">•</Button>&nbsp;
-            <Link to={'/books/' + book.id}>{book.title}</Link>
+            <Link onClick={() => bookFetch(book.id)} to={'/books/' + book.id}>{book.title}</Link>
         </td>
     </tr>;
 

@@ -27,7 +27,7 @@ const BookData = ({book}) => {
     if (!book) {
         return <h3>?</h3>
     } else if (book.isFetching) {
-        return <h3>Please wait...</h3>
+        return <h3>Loading...</h3>
     } else if (book.data) {
         return <Container>
             <h3>{book.data.author}: {book.data.title}</h3>
