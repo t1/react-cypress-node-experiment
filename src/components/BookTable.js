@@ -3,38 +3,24 @@ import {connect} from "react-redux";
 import Table from "react-bootstrap/Table";
 
 import BookTableItem from "./BookTableItem";
-import PlusMinus from "./PlusMinus";
-
-import {bookMinus, bookPlus} from "../actions/bookActions";
 import {selectBooks} from "../reducers/books";
 import Container from "react-bootstrap/Container";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
-const BookTable = ({books, bookPlus, bookMinus}) =>
+const BookTable = ({books}) =>
     <Container>
         {books.isFetching
             ?
-            <h4>Loading...</h4>
+            <ProgressBar animated now={100}/>
             :
-            <Table bordered size="sm">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Author</th>
-                    <th>Title</th>
-                </tr>
-                </thead>
+            <Table size="sm">
                 <tbody>
                 {books.items.map((book) =>
-                    <BookTableItem book={book} key={book.id}>
-                        <PlusMinus plus={() => bookPlus(book.id)} minus={() => bookMinus(book.id)}/>&nbsp;
-                    </BookTableItem>
+                    <BookTableItem book={book} key={book.id}/>
                 )}
                 </tbody>
             </Table>}
         <small>last update: {books.lastUpdated ? books.lastUpdated.toLocaleString() : "?"}</small>
     </Container>;
 
-export default connect(state => ({books: selectBooks(state)}), {
-    bookPlus,
-    bookMinus
-})(BookTable);
+export default connect(state => ({books: selectBooks(state)}))(BookTable);

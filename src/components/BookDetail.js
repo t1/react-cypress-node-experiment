@@ -8,6 +8,7 @@ import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import Link from "react-router-dom/es/Link";
 import {connect} from "react-redux";
 import {selectBook} from "../reducers/book";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 const BookDetail = ({selectBook, bookId}) => {
     const book = selectBook(Number.parseInt(bookId));
@@ -27,7 +28,7 @@ const BookData = ({book}) => {
     if (!book) {
         return <h3>?</h3>
     } else if (book.isFetching) {
-        return <h3>Loading...</h3>
+        return <ProgressBar animated now={100} />
     } else if (book.data) {
         return <Container>
             <h3>{book.data.author}: {book.data.title}</h3>
