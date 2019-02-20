@@ -18,14 +18,19 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "url-template": "^2.0.8",
-    "redux-devtools-extension": "latest"
+    "url-template": "^2.0.8"
+  },
+  "devDependencies": {
+    "cypress": "^3.1.5",
+    "eslint-plugin-cypress": "^2.2.0",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"

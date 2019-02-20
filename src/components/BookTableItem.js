@@ -9,7 +9,7 @@ const BookTableItem = ({book, bookPlus, bookMinus, bookFetch}) =>
     <tr>
         <td>{book.id}</td>
         <td>
-            <PlusMinus plus={() => bookPlus(book.id)} minus={() => bookMinus(book.id)}/>
+            <PlusMinus id={`book-${book.id}`} plus={() => bookPlus(book.id)} minus={() => bookMinus(book.id)}/>
         </td>
         <td>
             <Link onClick={() => bookFetch(book.id)} to={'/books/' + book.id}>

@@ -10,23 +10,27 @@ import Body from "./Body";
 import {counterDown, counterUp} from "../actions/counterActions";
 import {selectCounter} from "../reducers/counter";
 
-const Page = ({counter, counterUp, counterDown}) =>
+const Page = () =>
     <Container>
         <Navigation/>
         <br/>
         <h1>Books</h1>
-        <Container>
-            <PlusMinus plus={() => counterUp()} minus={() => counterDown()}/>
-            &nbsp;
-            Counter: {counter}
-        </Container>
+        <Counter/>
         <p/>
         <Body/>
     </Container>;
 
-export default connect(state => ({
+export default Page;
+
+const Counter = connect(state => ({
     counter: selectCounter(state)
 }), {
     counterUp,
     counterDown
-})(Page);
+})(({counter, counterUp, counterDown}) =>
+    <Container>
+        <PlusMinus id="counter-buttons" plus={() => counterUp()} minus={() => counterDown()}/>
+        &nbsp;
+        Counter: <span id="counter">{counter}</span>
+    </Container>
+);
