@@ -2279,6 +2279,11 @@ ccount@^1.0.3:
   resolved "https://registry.yarnpkg.com/ccount/-/ccount-1.0.3.tgz#f1cec43f332e2ea5a569fd46f9f5bde4e6102aff"
   integrity sha512-Jt9tIBkRc9POUof7QA/VwWd+58fKkEEfI+/t1/eOlxKM7ZhrczNzMFefge7Ai+39y1pR/pP6cI19guHy3FSLmw==
 
+chai-url@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/chai-url/-/chai-url-1.0.4.tgz#827e0fd7835c848b8ab8e2ce1d65d40521e62026"
+  integrity sha1-gn4P14NchIuKuOLOHWXUBSHmICY=
+
 chalk@2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
