@@ -3,6 +3,24 @@ import chaiUrl from 'chai-url'
 chai.use(chaiUrl);
 
 describe('Book Store Test', function () {
+    before(function () {
+        cy.request('PUT', 'http://localhost:8080/books', [{
+            "id": 1,
+            "author": "J.R.R. Tolkien",
+            "title": "The Hobbit",
+            "recommendedReadingAge": 5
+        }, {
+            "id": 2,
+            "author": "J.R.R. Tolkien",
+            "title": "The Lord Of The Rings",
+            "recommendedReadingAge": 14
+        }, {
+            "id": 3,
+            "author": "Steven King",
+            "title": "It",
+            "recommendedReadingAge": 16
+        }])
+    });
     it('Navigates the Book Store', function () {
         cy.visit('/');
         cy.url().should('have.path', "/");
