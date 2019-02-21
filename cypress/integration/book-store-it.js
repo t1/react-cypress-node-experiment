@@ -2,8 +2,8 @@ import chaiUrl from 'chai-url'
 
 chai.use(chaiUrl);
 
-describe('Book Store Test', function () {
-    before(function () {
+describe('Book Store IT', () => {
+    before(() => {
         cy.request('PUT', 'http://localhost:8080/books', [{
             "id": 1,
             "author": "J.R.R. Tolkien",
@@ -21,7 +21,7 @@ describe('Book Store Test', function () {
             "recommendedReadingAge": 16
         }])
     });
-    it('Navigates the Book Store', function () {
+    it('Navigates the Book Store', () => {
         cy.visit('/');
         cy.url().should('have.path', "/");
         cy.get('#counter').contains('0');
