@@ -5,15 +5,16 @@ chai.use(chaiUrl);
 
 let books = [];
 
-Given('a book id {int} {string} by {string} recommended at {int}', (id, title, author, recommendedReadingAge) => {
-    const book = {
-        "id": id,
-        "author": author,
-        "title": title,
-        "recommendedReadingAge": recommendedReadingAge
-    };
-    books[id] = book;
-    cy.request('POST', 'http://localhost:8080/books/' + id, book);
+Given('the following books:', (table) => {
+    const hashes = table.hashes();
+    for (let hash of hashes)
+        books[hash.id] = {
+            "id": hash.id,
+            "author": hash.author,
+            "title": hash.title,
+            "recommendedReadingAge": hash.recommendedReadingAge
+        };
+    cy.request('PUT', 'http://localhost:8080/books/', hashes);
 });
 
 When('I click on counter-up', () => {

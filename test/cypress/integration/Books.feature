@@ -1,9 +1,11 @@
 Feature: Basic Book-Store
 
   Scenario: Start
-    Given a book id 1 "The Hobbit" by "J.R.R. Tolkien" recommended at 5
-    Given a book id 2 "The Lord Of The Rings" by "J.R.R. Tolkien" recommended at 14
-    Given a book id 3 "It" by "Steven King" recommended at 16
+    Given the following books:
+      | id | author         | title                 | recommendedReadingAge |
+      | 1  | J.R.R. Tolkien | The Hobbit            | 5                     |
+      | 2  | J.R.R. Tolkien | The Lord Of The Rings | 14                    |
+      | 3  | Steven King    | It                    | 16                    |
     When I go home
     Then I'm home
 
