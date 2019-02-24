@@ -12,10 +12,6 @@ Given('I\'m on {string}', (path) => {
     cy.url().should('have.path', path);
 });
 
-Then('the url should have path {string}', (path) => {
-    cy.url().should('have.path', path);
-});
-
 When('I click on {string}', (selector) => {
     cy.contains(selector).click();
 });
