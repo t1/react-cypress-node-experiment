@@ -22,16 +22,23 @@
     "url-template": "^2.0.8"
   },
   "devDependencies": {
+    "cucumber": "^5.1.0",
     "cypress": "^3.1.5",
+    "cypress-cucumber-preprocessor": "^1.11.0",
     "eslint-plugin-cypress": "^2.2.0",
     "redux-devtools-extension": "^2.13.8"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "cucumber": "cucumber-js",
     "eject": "react-scripts eject",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "cypress-focus": "cypress open  -e TAGS='@focus'"
   },
   "eslintConfig": {
     "extends": "react-app"
