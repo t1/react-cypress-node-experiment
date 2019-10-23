@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "react-router-dom/es/Link";
+import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {selectBooks} from "../reducers/books";
 import {bookFetch, bookMinus, bookPlus} from "../actions/bookActions";

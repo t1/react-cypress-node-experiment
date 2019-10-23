@@ -5,7 +5,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 import {faAngleLeft as AngleLeftIcon} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
-import Link from "react-router-dom/es/Link";
+import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {selectBook} from "../reducers/book";
 import ProgressBar from "react-bootstrap/ProgressBar";
@@ -28,7 +28,7 @@ const BookData = ({book}) => {
     if (!book) {
         return <h3>?</h3>
     } else if (book.isFetching) {
-        return <ProgressBar animated now={100} />
+        return <ProgressBar animated now={100}/>
     } else if (book.data) {
         return <Container>
             <h3>{book.data.author}: {book.data.title}</h3>

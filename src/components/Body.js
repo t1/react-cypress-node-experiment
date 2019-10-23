@@ -1,11 +1,9 @@
 import React from "react";
-import Route from "react-router-dom/es/Route";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import Container from "react-bootstrap/Container";
 
 import BookTable from "./BookTable";
 import BookDetail from "./BookDetail";
-
-import {BrowserRouter as Router} from "react-router-dom";
 
 // noinspection JSUnresolvedVariable
 const Body = () =>
