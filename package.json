@@ -23,13 +23,14 @@
   },
   "devDependencies": {
     "cucumber": "^6.0.2",
-    "cypress": "^3.4.1",
+    "cypress": "4.0.1",
     "cypress-cucumber-preprocessor": "^2.0.1",
     "eslint-plugin-cypress": "^2.7.0",
     "redux-devtools-extension": "^2.13.8"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "test/cypress/integration"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,7 +39,9 @@
     "cucumber": "cucumber-js",
     "eject": "react-scripts eject",
     "cypress": "cypress open",
-    "cypress-focus": "cypress open  -e TAGS='@focus'"
+    "cypress-focus": "cypress open  -e TAGS='@focus'",
+    "cypress-run-chrome": "cypress run --browser chrome",
+    "cypress-run-firefox": "cypress run --browser firefox"
   },
   "eslintConfig": {
     "extends": "react-app"
